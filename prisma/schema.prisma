@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "cockroachdb"
+}
+
+enum ApplicationStatus {
+  APPLIED
+  INTERVIEWING
+  CONTRACTED
+  COMPLETED
+  CLOSED
+}
+
+model applications {
+  id            String            @id @default(uuid())
+  title         String
+  applicantName String
+  applicantEmail String
+
+  status        ApplicationStatus @default(APPLIED)
+  contractUrl   String? 
+  metadata      Json?
+
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  statusHistory statushistory[]
+
+  @@index([status])
+}
+
+model statushistory {
+  id             String            @id @default(uuid())
+
+  applicationId  String
+  application    applications       @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  previousStatus ApplicationStatus?
+  newStatus      ApplicationStatus
+
+  changedBy      String
+
+  metadata       Json?
+
+  createdAt      DateTime          @default(now())
+
+  @@index([applicationId])
+  @@index([createdAt])
+}
