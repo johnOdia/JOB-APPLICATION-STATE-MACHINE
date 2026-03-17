@@ -31,7 +31,11 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      # 5️⃣ Run tests
+      # 5️⃣ Generate Prisma client
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      # 6️⃣ Run tests
       - name: Run Jest tests
         run: npm run test
 
