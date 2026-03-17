@@ -1,12 +1,11 @@
-// src/applications/applications.service.ts
 import {
   Injectable,
   NotFoundException,
   BadRequestException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { ApplicationStatus } from '../../generated/prisma/client';
-import { Prisma } from '../../generated/prisma/client';
+import { AllApplicationStatuses as ApplicationStatus } from 'src/common/enums';
+import { Prisma } from '@prisma/client';
 import { UserRole } from '..//common/enums';
 import { CreateApplicationDto } from './dto/create-application.dto';
 import { EventEmitter2 } from '@nestjs/event-emitter';
@@ -18,7 +17,7 @@ interface ApplicationStatusChangeDto {
   changedBy: string;
   metadata?: Prisma.JsonValue;
   contractUrl?: string;
-  userRole?: UserRole; // optional, default to 'USER'
+  userRole?: UserRole;
 }
 
 @Injectable()
