@@ -4,7 +4,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { AllApplicationStatuses as ApplicationStatus } from 'src/common/enums';
+import { AllApplicationStatuses as ApplicationStatus } from '../common/enums';
 import { Prisma } from '@prisma/client';
 import { UserRole } from '..//common/enums';
 import { CreateApplicationDto } from './dto/create-application.dto';

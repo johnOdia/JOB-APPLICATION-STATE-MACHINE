@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ApplicationsService } from './applications.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { AllApplicationStatuses as ApplicationStatus } from 'src/common/enums';
+import { AllApplicationStatuses as ApplicationStatus } from '../common/enums';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
 describe('ApplicationsService', () => {
