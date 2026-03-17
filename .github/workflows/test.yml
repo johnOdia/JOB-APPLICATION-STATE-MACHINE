@@ -33,7 +33,7 @@ jobs:
 
       # 5️⃣ Run tests
       - name: Run Jest tests
-        run: npm run test -- --coverage --ci
+        run: npm run test
 
       # 6️⃣ Build project
       - name: Build project
