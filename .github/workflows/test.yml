@@ -10,6 +10,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     steps:
       # 1️⃣ Checkout repo
@@ -25,7 +27,7 @@ jobs:
 
       # 3️⃣ Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # 4️⃣ Run ESLint
       - name: Run ESLint
